@@ -5,16 +5,14 @@
 
 number = int(input('Введите целое трехзначное число:'))
 
-print('Обрабатываем число', number)
-
 dig1 = number // 100
 dig2 = (number - dig1 * 100) // 10
 dig3 = number - (dig1 * 100) - (dig2 * 10)
 
-print('{} - сотен, {} - десятков, {} - единиц'.format(dig1, dig2, dig3))
+# print('{} - сотен, {} - десятков, {} - единиц'.format(dig1, dig2, dig3))
 
 summ = dig1 + dig2 + dig3
 print('Сумма цифр числа равна', summ)
 
 mult = dig1 * dig2 * dig3
-print('Произведение цифр числа равна', mult)
+print('Произведение цифр числа равно', mult)
