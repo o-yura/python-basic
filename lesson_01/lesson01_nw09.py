@@ -7,9 +7,9 @@ a = float(input('Введите первое число: '))
 b = float(input('Введите второе число: '))
 c = float(input('Введите третье число: '))
 
-if b < a < c:
+if b < a < c or b > a > c:
     print('Среднее число: ', a)
-elif a < b < c:
+elif a < b < c or a > b > c:
     print('Среднее число: ', b)
 else:
     print('Среднее число: ', c)
