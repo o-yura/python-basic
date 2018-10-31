@@ -28,7 +28,6 @@ while True:
         if act == '/' and dig2 == 0:
             print('Деление на ноль не возможно!')
         else:
-            result = 0
             if act == '+':
                 result = dig1 + dig2
             elif act == '-':
