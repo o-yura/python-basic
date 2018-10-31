@@ -16,7 +16,7 @@ number = random.randint(0, 100)
 
 while True:
     remain = ATTEMPTS - i
-    if remain:
+    if remain != 0:
         print('У вас осталось {} попыток'.format(remain))
         user_number = int(input('Введите число: '))
         if user_number == number:
