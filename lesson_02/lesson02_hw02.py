@@ -12,7 +12,7 @@ odd = 0
 while number:
     dig = number % 10
     number = number // 10
-    if dig % 2:
+    if dig % 2 != 0:
         odd += 1
     else:
         even += 1
