@@ -11,7 +11,7 @@ for i in range(32, 128):
     print(i, "-", chr(i), end='')
     n += 1
     if n > 9:
-        print('\n', end='')
+        print()
         n = 0
     else:
         print(', ', end='')
