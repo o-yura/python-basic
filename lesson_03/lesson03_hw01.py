@@ -4,4 +4,4 @@
 for i in range(2, 100):
     for k in range(2, 10):
         if i % k == 0:
-            print('Число {} крато {}'.format(i, k))
+            print('Число {} кратно {}'.format(i, k))
