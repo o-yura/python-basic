@@ -9,7 +9,7 @@ result = []
 k = 0
 for i in first_data:
     if i % 2 == 0:
-        number = k + 1
+        number = k
         result.append(number)
     k += 1
 
