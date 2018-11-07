@@ -3,14 +3,15 @@
 # Второй - без использования "решета".
 # Проанализировать скорость и сложность алгоритмов.
 
+import cProfile
+
+
+# Вариант 1
+
 def gen_sieve(n):
-    sieve = [i for i in range(2, n)]
+    sieve = [i for i in range(n + 1)]
+    sieve[0], sieve[1] = 0, 0
     return sieve
-
-
-def add_unit(sieve):
-    sieve.append(len(sieve) + 2)
-    fix_digs(sieve)
 
 
 def fix_digs(sieve):
@@ -18,31 +19,58 @@ def fix_digs(sieve):
     for i in range(2, n):
         if sieve[i] != 0:
             k = i + i
-            while k < n + 2:
-                print('*** k', k, '*** n', n)
-                sieve[k - 2] = 0
+            while k < n:
+                sieve[k] = 0
                 k += i
 
 
-def get_dig(n, k=0):
-    for j, i in enumerate(sieve):
-        print('j', j, 'i', i)
-        if i != 0:
-            k += 1
+def add_digs(sieve, numbers):
+    sieve.append(numbers)
+    fix_digs(sieve)
 
-            if k < n:
-                add_unit(sieve)
-                print(sieve)
-                print('k', k, 'n', n)
-                get_dig(n, k)
+
+def get_dig(n):
+    sieve = gen_sieve(n)
+    fix_digs(sieve)
+    first_index = 2
+    k = 0
+    numbers = len(sieve)
+
+    while k != n:
+        for i in range(first_index, numbers):
+            if sieve[i] != 0:
+                k += 1
+        add_digs(sieve, numbers)
+        first_index = numbers
+        numbers += 1
+
+    return sieve[first_index - 1]
+
+
+# print(get_dig(68))
+
+
+# Вариант 2
+
+def get_dig2(n):
+    lim_nums = 0x7fffffff
+    list = []
+    result = 0
+    for i in range(2, lim_nums):
+        for j in list:
+            if i % j == 0:
+                break
+        else:
+            if n > 0:
+                list.append(i)
+                n -= 1
             else:
-                return sieve[j]
+                result = j
+                break
+    return result
 
 
-sieve = gen_sieve(4)
-# print(sieve)
-# add_unit(sieve)
-# print(sieve)
-# fix_digs(sieve)
-print(sieve)
-print(get_dig(8))
+# print(get_dig2(68))
+
+# cProfile.run('get_dig(1500)')
+# cProfile.run('get_dig2(1500)')
