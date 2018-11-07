@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # 2. Написать два алгоритма нахождения i-го по счёту простого числа.
 # Первый - использовать алгоритм решето Эратосфена.
 # Второй - без использования "решета".
@@ -49,6 +50,38 @@ def get_dig(n):
 
 # print(get_dig(15))
 
+# Результаты timeit n=100
+#
+# get_dig(10)
+# 100 loops, best of 3: 108 usec per loop
+# get_dig(100)
+# 100 loops, best of 3: 21.1 msec per loop
+# get_dig(200)
+# 100 loops, best of 3: 119 msec per loop
+
+# Результаты cProfile
+#
+# cProfile.run('get_dig(100)') - 1777 function calls in 0.029 seconds
+# ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#    443    0.028    0.000    0.028    0.000 lesson04_hw02.py:18(fix_digs)
+#    442    0.000    0.000    0.029    0.000 lesson04_hw02.py:28(add_digs)
+#    444    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+#    442    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+
+# cProfile.run('get_dig(1000)') - 27689 function calls in 7.157 seconds
+# ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#  6921    7.137    0.001    7.138    0.001 lesson04_hw02.py:18(fix_digs)
+#  6920    0.006    0.000    7.146    0.001 lesson04_hw02.py:28(add_digs)
+#  6922    0.001    0.000    0.001    0.000 {built-in method builtins.len}
+#  6920    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+
+# cProfile.run('get_dig(2000)') - 61569 function calls in 35.066 seconds
+# ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#  15391   35.014    0.002   35.017    0.002 lesson04_hw02.py:18(fix_digs)
+#  15390    0.017    0.000   35.036    0.002 lesson04_hw02.py:28(add_digs)
+#  15392    0.003    0.000    0.003    0.000 {built-in method builtins.len}
+#  15390    0.003    0.000    0.003    0.000 {method 'append' of 'list' objects}
+
 
 # Вариант 2
 
@@ -72,5 +105,46 @@ def get_dig2(n):
 
 # print(get_dig2(15))
 
-# cProfile.run('get_dig(1500)')
-# cProfile.run('get_dig2(1500)')
+# Результаты timeit n=100
+#
+# dig2(10)
+# 100 loops, best of 3: 6.46 usec per loop
+# get_dig2(100)"
+# 100 loops, best of 3: 284 usec per loop
+# get_dig2(200)
+# 100 loops, best of 3: 1.05 msec per loop
+# dig2(1000)
+# 100 loops, best of 3: 27.4 msec per loop
+
+# Результаты cProfile
+#
+# cProfile.run('get_dig2(100)') - 104 function calls in 0.000 seconds
+# ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#      1    0.000    0.000    0.000    0.000 lesson04_hw02.py:67(get_dig2)
+#    100    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+
+# cProfile.run('get_dig2(1000)') - 1004 function calls in 0.029 seconds
+# ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#      1    0.029    0.029    0.029    0.029 lesson04_hw02.py:75(get_dig2)
+#   1000    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+
+# cProfile.run('get_dig2(2000)') - 2004 function calls in 0.111 seconds
+# ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#      1    0.111    0.111    0.111    0.111 lesson04_hw02.py:80(get_dig2)
+#   2000    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+
+
+# cProfile.run('get_dig(2000)')
+# cProfile.run('get_dig2(2000)')
+
+
+# Вывод
+# 1. Алгоритм работы с решетом сложен и работает медленно с большими числами
+# в связи с тем, что чем больше число в поиске, тем глубже
+# нужно растягивать решето и его обрабатывать.
+# На каждый шаг перебора числа приходится по 4 вызова обработки работы с решетом.
+# Основные затраты времени расходуются на зачеркивание составных чисел.
+
+#
+# 2. Без решета, удалось собрать алгоритм с обработкой в один проход и количество
+# вызовов равно порядку числа в ряде.
