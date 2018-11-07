@@ -47,30 +47,30 @@ def get_dig(n):
     return sieve[first_index - 1]
 
 
-# print(get_dig(68))
+# print(get_dig(15))
 
 
 # Вариант 2
 
 def get_dig2(n):
     lim_nums = 0x7fffffff
-    list = []
-    result = 0
+    list_digs = []
+    result_num = 0
     for i in range(2, lim_nums):
-        for j in list:
-            if i % j == 0:
+        for k in list_digs:
+            if i % k == 0:
                 break
         else:
             if n > 0:
-                list.append(i)
+                list_digs.append(i)
                 n -= 1
             else:
-                result = j
+                result_num = k
                 break
-    return result
+    return result_num
 
 
-# print(get_dig2(68))
+# print(get_dig2(15))
 
 # cProfile.run('get_dig(1500)')
 # cProfile.run('get_dig2(1500)')
