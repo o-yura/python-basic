@@ -8,7 +8,7 @@
 
 from collections import deque
 
-LIST_HEX = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f')
+LIST_HEX = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F')
 
 
 def hex_dec(hex_num):
@@ -17,7 +17,7 @@ def hex_dec(hex_num):
     dec_sum = 0
     mult = 0
     for i in hex_list:
-        num_index = LIST_HEX.index(i.lower())
+        num_index = LIST_HEX.index(i.upper())
         if mult != 0:
             dec_sum += num_index * (16 ** mult)
         else:
@@ -48,11 +48,11 @@ def dec_hex(dec_num):
     return list(result)
 
 
-input_1 = 'A2'
-input_2 = 'C4F'
+input_num1 = list(input('Введите первое шестнадцатиричное число: '))
+input_num2 = list(input('Введите второе шестнадцатиричное число: '))
 
-num1_dec = hex_dec(input_1)
-num2_dec = hex_dec(input_2)
+num1_dec = hex_dec(input_num1)
+num2_dec = hex_dec(input_num2)
 
 sum_dec = num1_dec + num2_dec
 sum_hex = dec_hex(sum_dec)
@@ -60,5 +60,7 @@ sum_hex = dec_hex(sum_dec)
 mult_dec = num1_dec * num2_dec
 mult_hex = dec_hex(mult_dec)
 
-print(sum_hex)
-print(mult_hex)
+print('Первое число: ', input_num1)
+print('Второе число: ', input_num2)
+print('Сумма чисел равна: ', sum_hex)
+print('Произведение чисел равно: ', mult_hex)
