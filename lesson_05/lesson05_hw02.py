@@ -33,6 +33,9 @@ def dec_hex(dec_num):
     whole = dec_num // 16
     remain = dec_num % 16
 
+    if whole == 0 and remain == 0:
+        list_num.append(0)
+
     while whole != 0 or remain != 0:
         if whole > 15:
             list_num.append(LIST_HEX[remain])
