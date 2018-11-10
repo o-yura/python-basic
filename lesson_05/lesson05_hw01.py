@@ -25,15 +25,15 @@ def input_data(size):
 
 # Функция вычисления средней квартальной прибыли предприятия за год
 def calc_midle(unit):
-    size_1 = unit.income_1
-    size_2 = unit.income_2
-    size_3 = unit.income_3
-    size_4 = unit.income_4
+    size_1 = unit.profit_1
+    size_2 = unit.profit_2
+    size_3 = unit.profit_3
+    size_4 = unit.profit_4
     midle = (size_1 + size_2 + size_3 + size_4) / 4
     return midle
 
 
-Company = namedtuple('Company', 'name, income_1, income_2, income_3, income_4')
+Company = namedtuple('Company', 'name, profit_1, profit_2, profit_3, profit_4')
 
 # Список компаний
 units = []
