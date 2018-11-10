@@ -53,16 +53,11 @@ def dec_hex(dec_num):
 input_num1 = list(input('Введите первое шестнадцатиричное число: '))
 input_num2 = list(input('Введите второе шестнадцатиричное число: '))
 
+print('Первое число: ', input_num1)
+print('Второе число: ', input_num2)
+
 num1_dec = hex_dec(input_num1)
 num2_dec = hex_dec(input_num2)
 
-sum_dec = num1_dec + num2_dec
-sum_hex = dec_hex(sum_dec)
-
-mult_dec = num1_dec * num2_dec
-mult_hex = dec_hex(mult_dec)
-
-print('Первое число: ', input_num1)
-print('Второе число: ', input_num2)
-print('Сумма чисел равна: ', sum_hex)
-print('Произведение чисел равно: ', mult_hex)
+print('Сумма чисел равна: ', dec_hex(num1_dec + num2_dec))
+print('Произведение чисел равно: ', dec_hex(num1_dec * num2_dec))
