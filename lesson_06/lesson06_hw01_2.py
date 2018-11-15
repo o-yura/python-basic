@@ -16,13 +16,9 @@
 
 
 from random import randint
-from sys import getsizeof
-from collections import Iterable
 
-# импортируем функции обработки статистики из предыдущего исполнения
-
+# импортируем функцию обработки статистики из предыдущего исполнения
 from lesson06_hw01 import calc_size
-from lesson06_hw01 import output_info
 
 
 # Вариант 1.
@@ -65,6 +61,7 @@ def max_unit2(data):
     else:
         return False
 
+
 if __name__ == '__main__':
     SIZE = 100
     data = [randint(-1000, 1000) for _ in range(SIZE)]
@@ -74,17 +71,14 @@ if __name__ == '__main__':
     var_list = []
     print('Решение задачи вариантом 1:')
     print('Результат:', max_unit(data))
-    output_info(var_list)
-    # Вычитаем размер служебного списка (var_list) для сбора информации
-    print('Под переменные выделено:', calc_size(var_list) - getsizeof(var_list), 'байт памяти')
+    calc_size(var_list)
     del var_list
 
     ### Запускаем второй вариант
     var_list = []
     print('Решение задачи вариантом 2:')
     print('Результат:', max_unit2(data))
-    output_info(var_list)
-    print('Под переменные выделено:', calc_size(var_list) - getsizeof(var_list), 'байт памяти')
+    calc_size(var_list)
     del var_list
 
 # Python 3.5.3 i686 (32 bit)
