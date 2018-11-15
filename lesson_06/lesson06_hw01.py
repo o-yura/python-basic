@@ -85,28 +85,26 @@ def get_max_2(n):
 
     return spam_data.most_common(1)[0][0]
 
+if __name__ == '__main__':
+    ### Запускаем первый вариант
+    # Временный список для сбора переменных в разных функциях
+    var_list = []
+    print('Решение задачи вариантом 1:')
+    print('Результат:', get_max_1(10))
+    output_info(var_list)
+    # Вычитаем размер служебного списка (var_list) для сбора информации
+    print('Под переменные выделено:', calc_size(var_list) - getsizeof(var_list), 'байт памяти')
+    del var_list
 
-### Запускаем первый вариант
-# Временный список для сбора переменных в разных функциях
-var_list = []
-print('Решение задачи вариантом 1:')
-print('Результат:', get_max_1(10))
-output_info(var_list)
-# Вычитаем размер служебного списка (var_list) для сбора информации
-print('Под переменные выделено:', calc_size(var_list) - getsizeof(var_list), 'байт памяти')
-del var_list
+    ### Запускаем второй вариант
+    var_list = []
+    print('Решение задачи вариантом 2:')
+    print('Результат:', get_max_2(10))
+    output_info(var_list)
+    print('Под переменные выделено:', calc_size(var_list) - getsizeof(var_list), 'байт памяти')
+    del var_list
 
-print()
-
-### Запускаем второй вариант
-var_list = []
-print('Решение задачи вариантом 2:')
-print('Результат:', get_max_2(10))
-output_info(var_list)
-print('Под переменные выделено:', calc_size(var_list) - getsizeof(var_list), 'байт памяти')
-del var_list
-
-### Python 3.6.6 x86_64
+### Python 3.6.6 x86_64 (64 bit)
 #
 # Результат выполнения программ:
 #
