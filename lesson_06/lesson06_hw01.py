@@ -33,18 +33,19 @@ def calc_size(var_list):
 
     spam_sizes = []
     _get_no_iter(var_list)
-    return sum(spam_sizes)
 
-
-# Вывод статистической информации по переменным
-def output_info(data):
     print('Список переменных:')
     print('\t{0:>3} {1:<12} {2:<10}'.format('NN', 'Название', 'Тип'))
-    for i in data:
+    for i in var_list:
         j = 0
         for key, value in i.items():
             j += 1
             print('\t{0:>3} {1:<12} {2:<10}'.format(j, key, str(type(value))))
+
+    # Вычитаем размер контейнера хранения списка переменных
+    total_use = sum(spam_sizes) - getsizeof(var_list)
+
+    print('Под переменные выделено:', total_use, 'байт памяти')
 
 
 # Выбрано задание 4 урока 3.
@@ -85,23 +86,21 @@ def get_max_2(n):
 
     return spam_data.most_common(1)[0][0]
 
+
 if __name__ == '__main__':
     ### Запускаем первый вариант
     # Временный список для сбора переменных в разных функциях
     var_list = []
     print('Решение задачи вариантом 1:')
-    print('Результат:', get_max_1(10))
-    output_info(var_list)
-    # Вычитаем размер служебного списка (var_list) для сбора информации
-    print('Под переменные выделено:', calc_size(var_list) - getsizeof(var_list), 'байт памяти')
+    print('Результат: ', get_max_1(10))
+    calc_size(var_list)
     del var_list
 
     ### Запускаем второй вариант
     var_list = []
     print('Решение задачи вариантом 2:')
-    print('Результат:', get_max_2(10))
-    output_info(var_list)
-    print('Под переменные выделено:', calc_size(var_list) - getsizeof(var_list), 'байт памяти')
+    print('Результат: ', get_max_2(10))
+    calc_size(var_list)
     del var_list
 
 ### Python 3.6.6 x86_64 (64 bit)
