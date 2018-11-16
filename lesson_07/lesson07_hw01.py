@@ -12,6 +12,7 @@ def gen_array(n):
     array = [randint(MIN_INT, MAX_INT) for _ in range(n)]
     return array
 
+
 # В процессе поднятия пузырька в конец последовательности
 # находим самый большой элемент и загоняем его в начало.
 # После каждого прохода сужаем ряд для следующей обработки.
@@ -28,15 +29,16 @@ def bubble_sort(array):
             if array[i] > max_unit:
                 max_unit = array[i]
                 max_index = i
-        array[first_unit], array[max_index] = array[max_index], array[first_unit]
+        if max_index != 0:
+            array[first_unit], array[max_index] = array[max_index], array[first_unit]
         last_unit -= 1
         first_unit += 1
-        # print(array)
+    return array
 
 
-array = gen_array(10)
+data = gen_array(10)
 print('Исходный массив:')
-print(array)
-bubble_sort(array)
+print(data)
+data = bubble_sort(data)
 print('Массив после сортировки:')
-print(array)
+print(data)
