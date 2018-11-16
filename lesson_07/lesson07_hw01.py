@@ -33,12 +33,11 @@ def bubble_sort(array):
             array[first_unit], array[max_index] = array[max_index], array[first_unit]
         last_unit -= 1
         first_unit += 1
-    return array
 
 
 data = gen_array(10)
 print('Исходный массив:')
 print(data)
-data = bubble_sort(data)
+bubble_sort(data)
 print('Массив после сортировки:')
 print(data)
