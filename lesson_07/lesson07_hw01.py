@@ -9,12 +9,14 @@ MAX_INT = 99
 
 
 def gen_array(n):
-    array = [randint(MIN_INT, MAX_INT) for i in range(n)]
+    array = [randint(MIN_INT, MAX_INT) for _ in range(n)]
     return array
 
+# В процессе поднятия пузырька в конец последовательности
+# находим самый большой элемент и загоняем его в начало.
+# После каждого прохода сужаем ряд для следующей обработки.
 
-def bubble_sort(n):
-    array = gen_array(n)
+def bubble_sort(array):
     first_unit = 0
     last_unit = len(array) - 1
     while first_unit < last_unit:
@@ -32,4 +34,9 @@ def bubble_sort(n):
         # print(array)
 
 
-bubble_sort(10)
+array = gen_array(10)
+print('Исходный массив:')
+print(array)
+bubble_sort(array)
+print('Массив после сортировки:')
+print(array)
